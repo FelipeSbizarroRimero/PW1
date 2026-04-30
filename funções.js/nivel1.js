@@ -1,5 +1,5 @@
 let linguagens = ["JavaScript", "Python", "Java"];
-console.log(linguagens[1]); // Python
+console.log(linguagens[1]);
 
 let prova = {
     materia: "Matemática",

@@ -14,5 +14,5 @@ function gerarRelatorio(nomeAluno, status = "Pendente") {
     console.log(`Relatório do aluno ${nomeAluno} está ${status}`);
 }
 
-gerarRelatorio("Felipe"); // usa o padrão
-gerarRelatorio("Ana", "Concluído"); // sobrescreve o padrão
+gerarRelatorio("Felipe");
+gerarRelatorio("Ana", "Concluído");
