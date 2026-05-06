@@ -1,4 +1,4 @@
-const readline = require('readline-sync');
+let input = require("readline-sync");
 
 let alunos = 5;
 let notasPorAluno = 4;
@@ -10,7 +10,7 @@ for (let i = 0; i < alunos; i++) {
     console.log(`\nAluno ${i + 1}`);
 
     for (let j = 0; j < notasPorAluno; j++) {
-        let nota = Number(readline.question(`Digite a nota ${j + 1}: `));
+        let nota = input.questionInt(`Digite a nota ${j + 1}: `);
         notas.push(nota);
         soma += nota;
     }
