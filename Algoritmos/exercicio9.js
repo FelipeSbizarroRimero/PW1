@@ -1,63 +1,85 @@
 const conta = {
-    agencia: "123",
-    numeroConta: "2009",
-    senha: "070809",
-    saldo: 780,
+    agencia: "1234",
+    numeroConta: "56789",
+    senha: "123456",
+    saldo: 1380,
     historico: []
 };
 
 function validarAcesso(agencia, numeroConta, senha) {
-
-    if (
-        agencia == conta.agencia,
-        numeroConta == conta.numeroConta,
-        senha == conta.senha
-    ) {
-        return "Pode passar";
-    } else {
-        return "Incorreto";
-    }
-
+    return (
+        conta.agencia === agencia &&
+        conta.numeroConta === numeroConta &&
+        conta.senha === senha
+    );
 }
 
 function exibirSaldo() {
-    return "Saldo disponível: R$ " + conta.saldo;
+    console.log(`Saldo atual: R$ ${conta.saldo}`);
 }
 
 function realizarSaque(valor) {
-
-    if (valor > conta.saldo) {
-        return "Saldo insuficiente.";
+    if (valor <= 0) {
+        console.log("Valor inválido.");
+        return;
     }
 
-    conta.saldo = conta.saldo - valor;
+    if (valor > conta.saldo) {
+        console.log("Saldo insuficiente.");
+        return;
+    }
 
-    conta.historico[conta.historico.length] =
-        "Saque de R$ " + valor;
+    if (valor % 10 !== 0) {
+        console.log("O valor deve ser múltiplo de 10.");
+        return;
+    }
 
-    let notas100 = parseInt(valor / 100);
-    valor = valor % 100;
+    let restante = valor;
 
-    let notas50 = parseInt(valor / 50);
-    valor = valor % 50;
+    let notas100 = 0;
+    let notas50 = 0;
+    let notas20 = 0;
+    let notas10 = 0;
 
-    let notas20 = parseInt(valor / 20);
-    valor = valor % 20;
+    while (restante >= 100) {
+        notas100++;
+        restante -= 100;
+    }
 
-    let notas10 = parseInt(valor / 10);
+    while (restante >= 50) {
+        notas50++;
+        restante -= 50;
+    }
 
-    return (
-        "Saque realizado com sucesso!\n" +
-        "Notas entregues:\n" +
-        "100: " + notas100 + "\n" +
-        "50: " + notas50 + "\n" +
-        "20: " + notas20 + "\n" +
-        "10: " + notas10
-    );
+    while (restante >= 20) {
+        notas20++;
+        restante -= 20;
+    }
 
+    while (restante >= 10) {
+        notas10++;
+        restante -= 10;
+    }
+
+    conta.saldo -= valor;
+
+    console.log(`Saque realizado: R$ ${valor}`);
+    console.log("Cédulas entregues:");
+
+    if (notas100 > 0) console.log(`${notas100} nota(s) de R$100`);
+    if (notas50 > 0) console.log(`${notas50} nota(s) de R$50`);
+    if (notas20 > 0) console.log(`${notas20} nota(s) de R$20`);
+    if (notas10 > 0) console.log(`${notas10} nota(s) de R$10`);
 }
 
-console.log(validarAcesso("123", "2009", "070809"));
-console.log(exibirSaldo());
-console.log(realizarSaque(280));
-console.log(exibirSaldo());
+if (validarAcesso("1234", "56789", "123456")) {
+    console.log("Acesso autorizado!");
+
+    exibirSaldo();
+
+    realizarSaque(280);
+
+    exibirSaldo();
+} else {
+    console.log("Agência, conta ou senha inválidos.");
+}
