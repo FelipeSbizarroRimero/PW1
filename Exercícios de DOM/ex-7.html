@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<input type="number" id="n1">
+<input type="number" id="n2">
+
+
+<button onclick="somar()">
+    Somar
+</button>
+
+
+<p id="resultado"></p>
+
+<script>
+
+const n1 = document.querySelector("#n1")
+const n2 = document.querySelector("#n2")
+const resultado = document.querySelector ("#resultado")
+
+
+function somar() {
+  const soma = Number(n1.value) + Number(n2.value)
+  resultado.innerHTML = soma
+}
+
+</script>
+
+</body>
+</html>

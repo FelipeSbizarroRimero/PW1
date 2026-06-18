@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<input
+    type="text"
+    id="tarefa"
+    placeholder="Nova tarefa"
+>
+
+
+<button onclick="adicionar()">
+    Adicionar
+</button>
+
+
+<ul id="lista"></ul>
+
+<script>
+
+const tarefa = document.querySelector("#tarefa")
+const lista = document.querySelector("#lista")
+
+
+function adicionar() {
+  const adtarefa = tarefa.value
+ 
+  const novaLi = document.createElement("li")
+ 
+  novaLi.innerHTML = adtarefa
+
+
+  lista.appendChild(novaLi)
+  }
+
+
+</script>
+
+</body>
+</html>

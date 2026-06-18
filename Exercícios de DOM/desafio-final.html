@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<input
+    type="text"
+    id="nome"
+    placeholder="Inserir nome"
+>
+
+<input
+    type="number"
+    id="idade"
+    placeholder="Inserir idade"
+>
+
+<button onclick="cadastrar()">
+    Cadastrar
+</button>
+
+<table border="1" id="tabela">
+    <tr>
+    <th id="colNome">Nome</th>
+    <th id="colIdade">Idade</th>
+    </tr>
+</table>
+
+<script>
+
+const nome = document.querySelector("#nome")
+const idade = document.querySelector("#idade")
+const tabela = document.querySelector("#tabela")
+
+function cadastrar(){
+  const adnome = nome.value
+  const adidade = idade.value
+
+  const novaLinha = document.createElement("tr")
+
+  const nometh = document.createElement ("td")
+  nometh.innerHTML = adnome
+
+  const idadeth = document.createElement("td")
+  idadeth.innerHTML = adidade
+
+  novaLinha.appendChild(nometh)
+  novaLinha.appendChild(idadeth)
+
+  tabela.appendChild(novaLinha)
+}
+
+</script>
+
+</body>
+</html>
